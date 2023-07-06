@@ -40,7 +40,7 @@ public class ProductController {
     @PostMapping("create")
     public String create(Model model, Product product, Pagination pagination) {
         productRepository.save(product);
-        pagination.setDi(0);
+        pagination.setTitle(null);
         int lastPage = (int)Math.ceil((double)productRepository.count() / pagination.getSz());
         pagination.setPg(lastPage);
         return "redirect:list?" + pagination.getQueryString();
